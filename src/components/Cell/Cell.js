@@ -1,29 +1,27 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import "./Cell.css";
 
 function Cell(props) {
 
-    const [isClicked, setIsClicked] = useState(false);
-    const [isHover, setIsHover] = useState(false);
-    const [mark, setMark] = useState(null);
+  const [isClicked, setIsClicked] = useState(false);
+  const [isHover, setIsHover] = useState(false);
+  const [mark, setMark] = useState(null);
 
-    function handleClick(number) {
-        if (!(props.value === null)) return;
-        const xIsNext = props.next();
+  function handleClick(number) {
+    if (props.isEnd() || isClicked) return;
 
-        setIsClicked(!isClicked);
-        setIsHover(false);
-        setMark(xIsNext ? 'x' : 'o');
+    setIsClicked(!isClicked);
+    setIsHover(false);
+    setMark(props.next() ? 'x' : 'o');
 
-        props.onClick(number);
-    }
+    props.onClick(number);
+  }
 
     function handleHover(hover){
-        if (isClicked) return;
-        var xIsNext =  props.next();
+      if (props.isEnd() || isClicked) return;
 
-        setIsHover(hover);
-        setMark(xIsNext ? 'x' : 'o');
+      setIsHover(hover);
+      setMark(props.next() ? 'x' : 'o');
     }
 
     function renderMark() {

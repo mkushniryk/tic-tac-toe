@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Cell from '../Cell/Cell';
 import "./Board.css";
 
@@ -7,10 +7,10 @@ function Board(props) {
     function renderCell(number, classes) {
         return (<Cell
                 classes = {classes}
-                value = {props.square[number]}
                 number = {number}
                 next = {() => props.next()}
-                onClick = {() => props.onClick()}
+                isEnd = {() => props.isEnd()}
+                onClick = {(i) => props.onClick(i)}
             />);
     }
 

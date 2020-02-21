@@ -28,10 +28,12 @@
 }
 
 .mark-hover {
+    background-color: white;
     display: block;
     opacity: 50%;
 }
 .mark-clicked {
+    background-color: white;
     display: block;
 }
 
